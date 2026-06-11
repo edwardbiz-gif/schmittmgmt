@@ -6,281 +6,340 @@
 <title>Schmitt Management — McDonald's Franchise Operator</title>
 <meta name="description" content="Schmitt Management operates 12 McDonald's restaurants in the western Chicago suburbs. Corporate site and operational communications policy.">
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --muted: #555;
-    --line: #e3e3e3;
-    --accent: #c8102e;
-    --bg: #ffffff;
-    --soft: #fafafa;
+  :root{
+    --red:#da291c; --red-2:#b4231b; --gold:#ffc72c; --gold-2:#ffb81c;
+    --ink:#15110f; --muted:#5b5550; --line:#ececec; --bg:#ffffff; --soft:#faf8f6;
+    --night:#1a0f0d;
   }
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-    color: var(--ink);
-    background: var(--bg);
-    line-height: 1.55;
-    font-size: 17px;
-  }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; }
-  header {
-    border-bottom: 3px solid var(--accent);
-    padding-bottom: 20px;
-    margin-bottom: 36px;
-  }
-  header .brand {
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin: 0;
-  }
-  header .tag {
-    margin: 6px 0 0;
-    color: var(--muted);
-    font-size: 15px;
-  }
-  h2 {
-    font-size: 20px;
-    margin: 40px 0 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--line);
-  }
-  h3 {
-    font-size: 16px;
-    margin: 22px 0 8px;
-    color: var(--ink);
-  }
-  p, li { margin: 0 0 12px; }
-  ul { padding-left: 22px; }
-  .lede { font-size: 18px; color: var(--ink); }
-  .meta {
-    background: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 16px 0;
-    font-size: 15px;
-  }
-  .meta strong { display: inline-block; min-width: 130px; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  footer {
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .anchor-nav {
-    background: var(--soft);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px 18px;
-    margin: 24px 0;
-    font-size: 14px;
-  }
-  .anchor-nav a { margin-right: 14px; }
-  code {
-    background: #f0f0f0;
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 14px;
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);background:var(--bg);font-size:17px;line-height:1.6;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+    overflow-x:hidden}
+  a{color:var(--red);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{background:#fff4d6;color:#7a5a00;padding:2px 9px;border-radius:999px;font-size:14px;font-weight:700;letter-spacing:.02em}
+
+  /* ---- sticky nav ---- */
+  .nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:14px;
+    padding:11px 20px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  .nav .m{width:30px;height:26px;flex:0 0 auto}
+  .nav b{font-weight:800;letter-spacing:-.01em;font-size:16px}
+  .nav .links{margin-left:auto;display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav .links a{color:var(--muted);font-size:13px;font-weight:600;white-space:nowrap;
+    padding:6px 10px;border-radius:999px}
+  .nav .links a:hover{color:var(--ink);background:var(--soft);text-decoration:none}
+
+  /* ---- hero ---- */
+  .hero{position:relative;color:#fff;text-align:center;padding:78px 22px 92px;overflow:hidden;
+    background:linear-gradient(125deg,#7a140c,#da291c 35%,#ff7a1a 60%,#ffc72c 92%);
+    background-size:300% 300%;animation:flow 14s ease infinite}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(900px 380px at 50% -10%,rgba(255,255,255,.30),transparent 70%)}
+  .hero .inner{position:relative;z-index:2;max-width:820px;margin:0 auto}
+  .arches{width:108px;height:92px;margin:0 auto 14px;display:block;
+    filter:drop-shadow(0 6px 20px rgba(0,0,0,.28));animation:glow 3.2s ease-in-out infinite}
+  @keyframes glow{0%,100%{filter:drop-shadow(0 6px 18px rgba(0,0,0,.25)) drop-shadow(0 0 0 rgba(255,199,44,0))}
+    50%{filter:drop-shadow(0 8px 26px rgba(0,0,0,.32)) drop-shadow(0 0 22px rgba(255,199,44,.65))}}
+  .hero h1{font-size:clamp(34px,8vw,60px);font-weight:900;letter-spacing:-.02em;margin:0;line-height:1.02;
+    text-shadow:0 2px 18px rgba(0,0,0,.22)}
+  .hero .tag{margin:14px 0 0;font-size:clamp(15px,3.6vw,19px);font-weight:600;opacity:.96;
+    text-shadow:0 1px 10px rgba(0,0,0,.25)}
+  .hero .lede{margin:18px auto 0;max-width:640px;font-size:clamp(15px,3.4vw,18px);opacity:.95;
+    text-shadow:0 1px 10px rgba(0,0,0,.22)}
+  .stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:30px 0 0}
+  .stat{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:16px;
+    padding:14px 20px;min-width:124px;backdrop-filter:blur(4px)}
+  .stat .n{font-size:30px;font-weight:900;line-height:1}
+  .stat .l{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;opacity:.9;margin-top:5px}
+  .scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;
+    color:rgba(255,255,255,.85);font-size:24px;animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+  /* ---- body ---- */
+  .wrap{max-width:780px;margin:0 auto;padding:10px 22px 30px}
+  section{padding:40px 0 8px;scroll-margin-top:64px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--red);background:#ffe9e7;padding:4px 11px;border-radius:999px;margin-bottom:12px}
+  h2{font-size:clamp(23px,5vw,30px);font-weight:900;letter-spacing:-.01em;margin:0 0 14px;position:relative}
+  h2::after{content:"";display:block;width:54px;height:5px;border-radius:3px;margin-top:10px;
+    background:linear-gradient(90deg,var(--red),var(--gold))}
+  h3{font-size:17px;font-weight:800;margin:24px 0 8px}
+  p,li{margin:0 0 12px}
+  ul{padding-left:22px}
+  .card{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:16px 0;
+    box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .meta strong{display:inline-block;min-width:138px}
+  .consent{background:linear-gradient(180deg,#fffaf0,#fff7e6);border:1px solid var(--gold);
+    border-left:5px solid var(--gold-2);border-radius:14px;padding:18px 22px;margin:16px 0;font-style:italic;color:#3a2f12}
+  .pills code{margin-right:6px}
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  footer{margin-top:30px;background:var(--night);color:#d9cfc9;padding:34px 22px 40px;text-align:center;font-size:13px}
+  footer .m{width:34px;height:29px;opacity:.95;margin-bottom:12px}
+  footer p{max-width:620px;margin:0 auto 8px}
+  footer a{color:var(--gold)}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero{animation:none}.arches{animation:none}.scrollcue{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <h1 class="brand">Schmitt Management</h1>
-  <p class="tag">McDonald's franchise operator &middot; Western Chicago suburbs</p>
+<!-- arches mark (reused) -->
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="arches" viewBox="0 0 120 100">
+    <path d="M6 96 C6 40 22 8 40 8 C53 8 58 24 60 38 C62 24 67 8 80 8 C98 8 114 40 114 96
+             L96 96 C96 52 90 30 80 30 C71 30 69 56 69 96 L51 96 C51 56 49 30 40 30
+             C30 30 24 52 24 96 Z" fill="#ffc72c"/>
+  </symbol>
+</defs></svg>
+
+<nav class="nav">
+  <svg class="m"><use href="#arches"/></svg>
+  <b>Schmitt Management</b>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#operations">Operations</a>
+    <a href="#sms">SMS Communications</a>
+    <a href="#terms">SMS Terms</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="inner">
+    <svg class="arches"><use href="#arches"/></svg>
+    <h1>Schmitt Management</h1>
+    <p class="tag">McDonald's franchise operator &middot; Western Chicago suburbs</p>
+    <p class="lede">We own and operate 12 McDonald's restaurants across the western suburbs of
+      Chicago, Illinois, employing over 600 people across our locations and corporate office.</p>
+    <div class="stats">
+      <div class="stat"><div class="n" data-to="12">0</div><div class="l">Restaurants</div></div>
+      <div class="stat"><div class="n" data-to="600" data-suffix="+">0</div><div class="l">Team members</div></div>
+      <div class="stat"><div class="n" data-to="1" data-text="Family">0</div><div class="l">Owner-operated</div></div>
+    </div>
+  </div>
+  <div class="scrollcue">&#8675;</div>
 </header>
 
-<p class="lede">Schmitt Management owns and operates 12 McDonald's restaurants
-across the western suburbs of Chicago, Illinois. We employ over 600 people
-across our locations and corporate office.</p>
+<div class="wrap">
 
-<div class="anchor-nav">
-  <a href="#about">About</a>
-  <a href="#operations">Operations</a>
-  <a href="#sms">SMS Communications</a>
-  <a href="#terms">SMS Terms</a>
-  <a href="#privacy">Privacy</a>
-  <a href="#contact">Contact</a>
-</div>
+<section id="about" class="reveal">
+  <span class="eyebrow">About</span>
+  <h2>A family-run McDonald's operator</h2>
+  <p>Schmitt Management is a privately held McDonald's franchisee. Our 12
+  locations serve communities including Naperville, Oswego, Aurora, and the
+  surrounding western suburbs of Chicago. We are not a public-facing
+  e-commerce business — this website serves as our corporate information
+  page and the public-facing reference for our internal communications
+  practices.</p>
+  <div class="card meta">
+    <p style="margin:0 0 6px"><strong>Legal entity:</strong> Schmitt Management</p>
+    <p style="margin:0 0 6px"><strong>Industry:</strong> Quick-service restaurants (McDonald's franchise)</p>
+    <p style="margin:0 0 6px"><strong>Locations:</strong> 12 restaurants, western Chicago suburbs</p>
+    <p style="margin:0"><strong>Corporate office:</strong> Aurora, IL area</p>
+  </div>
+</section>
 
-<h2 id="about">About</h2>
-<p>Schmitt Management is a privately held McDonald's franchisee. Our 12
-locations serve communities including Naperville, Oswego, Aurora, and the
-surrounding western suburbs of Chicago. We are not a public-facing
-e-commerce business — this website serves as our corporate information
-page and the public-facing reference for our internal communications
-practices.</p>
+<section id="operations" class="reveal">
+  <span class="eyebrow">Operations</span>
+  <h2>Run by the people closest to the guest</h2>
+  <p>Day-to-day operations are managed by general managers at each restaurant,
+  overseen by area supervisors and the ownership team. Our corporate
+  functions — payroll, accounting, IT, and people operations — are
+  centralized at the corporate office.</p>
+  <p>To coordinate across 12 restaurants and 600+ employees, we operate an
+  internal operations platform that handles task assignment, complaint
+  tracking, manager dashboards, and internal communications. The platform
+  is used only by our W-2 employees and managers; it is not accessible to
+  customers or the general public.</p>
+</section>
 
-<div class="meta">
-  <p style="margin:0 0 6px"><strong>Legal entity:</strong> Schmitt Management</p>
-  <p style="margin:0 0 6px"><strong>Industry:</strong> Quick-service restaurants (McDonald's franchise)</p>
-  <p style="margin:0 0 6px"><strong>Locations:</strong> 12 restaurants, western Chicago suburbs</p>
-  <p style="margin:0"><strong>Corporate office:</strong> Aurora, IL area</p>
-</div>
+<section id="sms" class="reveal">
+  <span class="eyebrow">SMS Communications Policy</span>
+  <h2>How we use text messaging</h2>
 
-<h2 id="operations">Operations</h2>
-<p>Day-to-day operations are managed by general managers at each restaurant,
-overseen by area supervisors and the ownership team. Our corporate
-functions — payroll, accounting, IT, and people operations — are
-centralized at the corporate office.</p>
+  <h3>What we send</h3>
+  <p>Schmitt Management sends operational SMS text messages to our managers,
+  supervisors, and corporate staff. These messages include:</p>
+  <ul>
+    <li>Personalized links to internal manager dashboards</li>
+    <li>Task assignments, reminders, and status updates</li>
+    <li>Acknowledgements of customer complaints routed to the responsible manager</li>
+    <li>Scheduling notes and operational announcements</li>
+    <li>Period-end bonus and performance summaries</li>
+  </ul>
+  <p>We do not send marketing, promotional, or consumer-facing text messages
+  of any kind. We do not text customers. We do not share recipient phone
+  numbers with third parties.</p>
 
-<p>To coordinate across 12 restaurants and 600+ employees, we operate an
-internal operations platform that handles task assignment, complaint
-tracking, manager dashboards, and internal communications. The platform
-is used only by our W-2 employees and managers; it is not accessible to
-customers or the general public.</p>
+  <h3>How recipients opt in</h3>
+  <p>Recipients of our SMS communications are W-2 employees of Schmitt
+  Management. During onboarding, each manager provides their mobile phone
+  number on an employee information form and signs an acknowledgement that
+  includes the following language:</p>
+  <div class="consent">
+    "By providing my mobile number, I consent to receive operational text
+    messages from Schmitt Management regarding my work duties, including links
+    to manager dashboards, task notifications, scheduling notes, and operational
+    reminders. Message and data rates may apply. Message frequency varies based
+    on operational activity. I can opt out at any time by replying STOP, or
+    request help by replying HELP."
+  </div>
+  <p>A signed copy of this acknowledgement is retained in each employee's
+  human-resources file.</p>
 
-<h2 id="sms">SMS Communications Policy</h2>
+  <h3>How to opt out</h3>
+  <p class="pills">Any recipient may opt out at any time by replying <code>STOP</code> to
+  any message received from us. This will immediately end all SMS
+  communications from Schmitt Management. To opt back in, reply
+  <code>START</code>. For help or questions, reply <code>HELP</code> or
+  email <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>.</p>
+  <p>Message and data rates may apply. Message frequency varies based on
+  operational activity, but is typically less than 10 messages per recipient
+  per week.</p>
+</section>
 
-<h3>What we send</h3>
-<p>Schmitt Management sends operational SMS text messages to our managers,
-supervisors, and corporate staff. These messages include:</p>
-<ul>
-  <li>Personalized links to internal manager dashboards</li>
-  <li>Task assignments, reminders, and status updates</li>
-  <li>Acknowledgements of customer complaints routed to the responsible manager</li>
-  <li>Scheduling notes and operational announcements</li>
-  <li>Period-end bonus and performance summaries</li>
-</ul>
-<p>We do not send marketing, promotional, or consumer-facing text messages
-of any kind. We do not text customers. We do not share recipient phone
-numbers with third parties.</p>
+<section id="terms" class="reveal">
+  <span class="eyebrow">SMS Terms &amp; Conditions</span>
+  <h2>SMS Terms &amp; Conditions</h2>
+  <p>These Terms &amp; Conditions govern the SMS text-messaging program operated
+  by Schmitt Management ("we," "us"). By providing your mobile number and
+  consenting during onboarding, you agree to these terms.</p>
 
-<h3>How recipients opt in</h3>
-<p>Recipients of our SMS communications are W-2 employees of Schmitt
-Management. During onboarding, each manager provides their mobile phone
-number on an employee information form and signs an acknowledgement that
-includes the following language:</p>
+  <h3>Program description</h3>
+  <p>Our SMS program sends operational messages to enrolled Schmitt Management
+  employees only — links to internal manager dashboards, task assignments and
+  reminders, complaint acknowledgements, scheduling notes, and period-end
+  bonus and performance summaries. This is an internal employee notification
+  program. It is not a marketing program, and we do not text customers or the
+  general public.</p>
 
-<div class="meta">
-<em>"By providing my mobile number, I consent to receive operational text
-messages from Schmitt Management regarding my work duties, including links
-to manager dashboards, task notifications, scheduling notes, and operational
-reminders. Message and data rates may apply. Message frequency varies based
-on operational activity. I can opt out at any time by replying STOP, or
-request help by replying HELP."</em>
-</div>
+  <h3>Message frequency</h3>
+  <p>Message frequency varies based on operational activity, but is typically
+  fewer than 10 messages per recipient per week.</p>
 
-<p>A signed copy of this acknowledgement is retained in each employee's
-human-resources file.</p>
+  <h3>Cost</h3>
+  <p>Message and data rates may apply. Schmitt Management does not charge for
+  the messages, but your mobile carrier's standard messaging and data rates
+  apply according to your plan.</p>
 
-<h3>How to opt out</h3>
-<p>Any recipient may opt out at any time by replying <code>STOP</code> to
-any message received from us. This will immediately end all SMS
-communications from Schmitt Management. To opt back in, reply
-<code>START</code>. For help or questions, reply <code>HELP</code> or
-email <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>.</p>
-<p>Message and data rates may apply. Message frequency varies based on
-operational activity, but is typically less than 10 messages per recipient
-per week.</p>
+  <h3>Opt-in and opt-out</h3>
+  <p class="pills">Recipients opt in by providing their mobile number and signing a written
+  acknowledgement during onboarding (see the SMS Communications Policy above).
+  You may opt out at any time by replying <code>STOP</code> to any message,
+  which immediately ends all SMS communications from us. Reply
+  <code>START</code> to opt back in. Reply <code>HELP</code>, or email
+  <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>, for assistance.</p>
 
-<h2 id="terms">SMS Terms &amp; Conditions</h2>
-<p>These Terms &amp; Conditions govern the SMS text-messaging program operated
-by Schmitt Management ("we," "us"). By providing your mobile number and
-consenting during onboarding, you agree to these terms.</p>
+  <h3>Carriers and delivery</h3>
+  <p>Mobile carriers are not liable for delayed or undelivered messages.
+  Message delivery is subject to effective transmission by your mobile
+  provider and is not guaranteed.</p>
 
-<h3>Program description</h3>
-<p>Our SMS program sends operational messages to enrolled Schmitt Management
-employees only — links to internal manager dashboards, task assignments and
-reminders, complaint acknowledgements, scheduling notes, and period-end
-bonus and performance summaries. This is an internal employee notification
-program. It is not a marketing program, and we do not text customers or the
-general public.</p>
+  <h3>Privacy</h3>
+  <p>Mobile numbers and message content are handled as described in our
+  <a href="#privacy">Privacy Policy</a> below. We do not share, sell, or rent
+  mobile numbers or message content to third parties for marketing or any
+  other purpose.</p>
 
-<h3>Message frequency</h3>
-<p>Message frequency varies based on operational activity, but is typically
-fewer than 10 messages per recipient per week.</p>
+  <h3>Changes</h3>
+  <p>We may update these Terms &amp; Conditions from time to time. Material
+  changes will be reflected on this page.</p>
+</section>
 
-<h3>Cost</h3>
-<p>Message and data rates may apply. Schmitt Management does not charge for
-the messages, but your mobile carrier's standard messaging and data rates
-apply according to your plan.</p>
+<section id="privacy" class="reveal">
+  <span class="eyebrow">Privacy Policy</span>
+  <h2>Privacy Policy</h2>
 
-<h3>Opt-in and opt-out</h3>
-<p>Recipients opt in by providing their mobile number and signing a written
-acknowledgement during onboarding (see the SMS Communications Policy above).
-You may opt out at any time by replying <code>STOP</code> to any message,
-which immediately ends all SMS communications from us. Reply
-<code>START</code> to opt back in. Reply <code>HELP</code>, or email
-<a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>, for assistance.</p>
+  <h3>What we collect</h3>
+  <p>For our internal operations platform, we collect: employee name, role,
+  work email, mobile phone number, restaurant assignment, and work-related
+  performance metrics. We do not collect personal financial information,
+  government identifiers, health information, or any data unrelated to the
+  employee's work with Schmitt Management.</p>
 
-<h3>Carriers and delivery</h3>
-<p>Mobile carriers are not liable for delayed or undelivered messages.
-Message delivery is subject to effective transmission by your mobile
-provider and is not guaranteed.</p>
+  <h3>How we use it</h3>
+  <p>We use the information collected solely to operate our business:
+  assigning tasks, routing communications, tracking restaurant-level
+  performance, and meeting our obligations as a McDonald's franchisee. We
+  do not use this information for marketing of any kind.</p>
 
-<h3>Privacy</h3>
-<p>Mobile numbers and message content are handled as described in our
-<a href="#privacy">Privacy Policy</a> below. We do not share, sell, or rent
-mobile numbers or message content to third parties for marketing or any
-other purpose.</p>
+  <h3>SMS data specifically</h3>
+  <p>Mobile phone numbers collected for SMS communications are stored in our
+  internal operations database and are used <strong>only</strong> to send
+  the operational messages described above. We do not share, sell, rent, or
+  otherwise disclose mobile phone numbers or SMS message content to any
+  third party for marketing or any other purpose. Mobile data is processed
+  by our SMS service provider (Salesmsg) solely to deliver the messages we
+  send; Salesmsg's own privacy policy applies to that processing.</p>
+  <p>No mobile information will be shared with third parties or affiliates for
+  marketing or promotional purposes. Text messaging originator opt-in data and
+  consent will not be shared with any third parties, excluding aggregators and
+  providers of the Text Message services.</p>
 
-<h3>Changes</h3>
-<p>We may update these Terms &amp; Conditions from time to time. Material
-changes will be reflected on this page.</p>
+  <h3>Data retention</h3>
+  <p>Employee data is retained for the duration of employment plus the
+  period required by applicable employment-records regulations. SMS message
+  records are retained for operational and audit purposes.</p>
 
-<h2 id="privacy">Privacy Policy</h2>
+  <h3>Your rights</h3>
+  <p>Employees may request a copy of the information we hold about them, or
+  request correction of inaccurate information, by emailing
+  <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>.</p>
+</section>
 
-<h3>What we collect</h3>
-<p>For our internal operations platform, we collect: employee name, role,
-work email, mobile phone number, restaurant assignment, and work-related
-performance metrics. We do not collect personal financial information,
-government identifiers, health information, or any data unrelated to the
-employee's work with Schmitt Management.</p>
+<section id="contact" class="reveal">
+  <span class="eyebrow">Contact</span>
+  <h2>Get in touch</h2>
+  <p>For questions about Schmitt Management, our operations, or this
+  website, please contact:</p>
+  <div class="card meta pills">
+    <p style="margin:0 0 6px"><strong>Operations:</strong> <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a></p>
+    <p style="margin:0"><strong>SMS support:</strong> Reply <code>HELP</code> to any message, or email the address above.</p>
+  </div>
+</section>
 
-<h3>How we use it</h3>
-<p>We use the information collected solely to operate our business:
-assigning tasks, routing communications, tracking restaurant-level
-performance, and meeting our obligations as a McDonald's franchisee. We
-do not use this information for marketing of any kind.</p>
-
-<h3>SMS data specifically</h3>
-<p>Mobile phone numbers collected for SMS communications are stored in our
-internal operations database and are used <strong>only</strong> to send
-the operational messages described above. We do not share, sell, rent, or
-otherwise disclose mobile phone numbers or SMS message content to any
-third party for marketing or any other purpose. Mobile data is processed
-by our SMS service provider (Salesmsg) solely to deliver the messages we
-send; Salesmsg's own privacy policy applies to that processing.</p>
-<p>No mobile information will be shared with third parties or affiliates for
-marketing or promotional purposes. Text messaging originator opt-in data and
-consent will not be shared with any third parties, excluding aggregators and
-providers of the Text Message services.</p>
-
-<h3>Data retention</h3>
-<p>Employee data is retained for the duration of employment plus the
-period required by applicable employment-records regulations. SMS message
-records are retained for operational and audit purposes.</p>
-
-<h3>Your rights</h3>
-<p>Employees may request a copy of the information we hold about them, or
-request correction of inaccurate information, by emailing
-<a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a>.</p>
-
-<h2 id="contact">Contact</h2>
-<p>For questions about Schmitt Management, our operations, or this
-website, please contact:</p>
-<div class="meta">
-  <p style="margin:0 0 6px"><strong>Operations:</strong> <a href="mailto:ops@schmittmcd.com">ops@schmittmcd.com</a></p>
-  <p style="margin:0"><strong>SMS support:</strong> Reply <code>HELP</code> to any message, or email the address above.</p>
 </div>
 
 <footer>
+  <svg class="m"><use href="#arches"/></svg>
   <p>&copy; 2026 Schmitt Management. All rights reserved.</p>
   <p>This site exists to document our corporate identity and our SMS and
   privacy practices. We do not sell products or services to consumers via
   this website.</p>
 </footer>
 
-</div>
+<script>
+  // reveal sections on scroll
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    els.forEach(function(e){io.observe(e);});
+  })();
+  // count-up stats
+  (function(){
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    [].slice.call(document.querySelectorAll('.stat .n')).forEach(function(el){
+      if(el.dataset.text){el.textContent=el.dataset.text;return;}
+      var to=+el.dataset.to, sfx=el.dataset.suffix||'';
+      if(reduce){el.textContent=to+sfx;return;}
+      var start=null,dur=1100;
+      function step(t){if(!start)start=t;var p=Math.min((t-start)/dur,1);
+        el.textContent=Math.round(p*to)+sfx;if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    });
+  })();
+</script>
 </body>
 </html>
